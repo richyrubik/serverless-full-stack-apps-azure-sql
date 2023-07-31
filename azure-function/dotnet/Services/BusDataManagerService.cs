@@ -52,6 +52,7 @@ public sealed class BusDataManagerService : IBusDataManagerService
     {
         var response = await _client.GetAsync(_options.RealTimeFeedUrl);
         response.EnsureSuccessStatusCode();
+        
         var responseJson = await response.Content.ReadAsStringAsync();
         var feed = JsonConvert.DeserializeObject<Feed>(
             responseJson, DefaultJsonSerializerSettings.Defaults);
